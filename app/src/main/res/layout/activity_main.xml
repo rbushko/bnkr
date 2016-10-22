@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.teamsh.bnkr.MainActivity">
+    tools:context="com.teamsh.bnkr.MainActivity"
+    android:background="@drawable/backgroundColor">
 
     <LinearLayout
         android:orientation="vertical"
@@ -20,62 +21,22 @@
         android:weightSum="1">
 
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView"
-            android:layout_gravity="right"
-            android:src="@mipmap/logo1" />
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.74"
-            android:weightSum="1">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="164dp"
-                android:layout_gravity="center_horizontal">
-
-                <ImageView
-                    android:layout_width="236dp"
-                    android:layout_height="163dp"
-                    android:id="@+id/imageView2"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/logininterface" />
-
-                <EditText
-                    android:layout_width="192dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editText"
-                    android:layout_gravity="center_horizontal|top"
-                    android:layout_marginTop="37dp"
-                    android:text="Type your account number"
-                    android:textSize="8dp" />
-
-                <EditText
-                    android:layout_width="192dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editText2"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="34dp"
-                    android:text="Type your password"
-                    android:textSize="8dp" />
-            </FrameLayout>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LOG IN"
-                android:id="@+id/button"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:background="#43bc63"
-                android:textColor="#ffffff"
-                android:layout_gravity="center_horizontal" />
-        </LinearLayout>
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/logo3" />
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOG IN"
+        android:id="@+id/button"
+        android:background="#1e502b"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
