@@ -43,7 +43,7 @@
                     android:layout_height="163dp"
                     android:id="@+id/imageView2"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/logininterface" />
+                    android:src="@drawable/login_interface" />
 
                 <EditText
                     android:layout_width="192dp"
