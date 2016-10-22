@@ -1,0 +1,22 @@
+{
+  "request" : {
+    "url" : "/accounts/123/deposits?key=12345",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "deposit/deposits-by-account.json",
+    "headers" : {
+      "Server" : "nginx/1.4.6 (Ubuntu)",
+      "Date" : "Fri, 12 Aug 2016 03:07:39 GMT",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Content-Length" : "992",
+      "Connection" : "keep-alive",
+      "X-Powered-By" : "Express",
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
+      "ETag" : "W/\"3e0-982d6b42\""
+    }
+  }
+}

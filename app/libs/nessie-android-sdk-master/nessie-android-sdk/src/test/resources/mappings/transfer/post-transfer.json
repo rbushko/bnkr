@@ -1,0 +1,25 @@
+{
+  "request" : {
+    "url" : "/accounts/123/transfers?key=12345",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\n  \"medium\": \"balance\",\n  \"payee_id\": \"56c66be6a73e492741507b32\",\n  \"transaction_date\": \"2016-08-12\",\n  \"amount\": 100.0,\n  \"description\": \"Transferring money.\"\n}",
+      "jsonCompareMode" : "LENIENT"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "bodyFileName" : "transfer/post-transfer.json",
+    "headers" : {
+      "Server" : "nginx/1.4.6 (Ubuntu)",
+      "Date" : "Fri, 12 Aug 2016 15:32:01 GMT",
+      "Content-Type" : "application/json; charset=utf-8",
+      "X-Powered-By" : "Express",
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
+      "Connection" : "Keep-Alive",
+      "Age" : "0"
+    }
+  }
+}
