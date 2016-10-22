@@ -25,10 +25,71 @@
             android:layout_height="wrap_content"
             android:id="@+id/imageView"
 
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/logo3" />
-            android:layout_gravity="right"
+            android:src="@drawable/logo3"
+            android:layout_marginLeft="40dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="User ID"
+            android:id="@+id/textView"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="30dp" />
+
+        <EditText
+            android:layout_width="281dp"
+            android:layout_height="30dp"
+            android:id="@+id/editText"
+            android:layout_marginTop="10dp"
+            android:text="Type your account number"
+            android:textSize="13dp"
+            android:background="#ffffff"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:id="@+id/textView2"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp" />
+
+        <EditText
+            android:layout_width="283dp"
+            android:layout_height="32dp"
+            android:id="@+id/editText3"
+            android:layout_marginTop="10dp"
+            android:text="Type your password"
+            android:textSize="13dp"
+            android:background="#ffffff"
+            android:layout_gravity="center_horizontal" /><![CDATA[
+
+
+
+
+
+
+
+
+
+
+
+        android:layout_gravity="right"
             android:src="@mipmap/logo1" />
+
+
+
+
+
+
+
+
+
+
+
+        ]]>
 
         <LinearLayout
             android:orientation="vertical"
@@ -39,52 +100,35 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="164dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_height="137dp">
 
 
-                <EditText
-                    android:layout_width="192dp"
+                <Button
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText"
+                    android:text="LOG IN"
+                    android:id="@+id/button2"
+                    android:background="#1e502b"
+                    android:textColor="#ffffff"
                     android:layout_gravity="center_horizontal|top"
-                    android:layout_marginTop="37dp"
-                    android:text="Type your account number"
-                    android:textSize="8dp" />
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="23dp" />
 
-                <EditText
-                    android:layout_width="192dp"
+                <Button
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText2"
+                    android:text="SIGN UP"
+                    android:id="@+id/button"
                     android:layout_gravity="center"
-                    android:layout_marginTop="34dp"
-                    android:text="Type your password"
-                    android:textSize="8dp" />
+                    android:layout_marginTop="39dp"
+                    android:textColor="#ffffff"
+                    android:background="#1e502b" />
             </FrameLayout>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LOG IN"
-                android:id="@+id/button"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:background="#43bc63"
-                android:textColor="#ffffff"
-                android:layout_gravity="center_horizontal" />
         </LinearLayout>
-    </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LOG IN"
-        android:id="@+id/button2"
-        android:background="#1e502b"
-        android:textColor="#ffffff"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+    </LinearLayout>
 
 </RelativeLayout>
