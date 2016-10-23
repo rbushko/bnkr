@@ -78,6 +78,13 @@ public class MainActivity extends AppCompatActivity {
                             if (a.getAccountNumber().equals("000000" + phoneNumberEdit.getText().toString())
                                     && a.getNickname().equals(passwordEdit.getText().toString())) {
                                 Log.d("Sign in", "Success");
+
+                                // Start the pebble service
+                                Intent service = new Intent(getApplicationContext(), BankDataService.class);
+                                service.putExtra("id", a.getId().toString());
+                                Log.d("Service ID", a.getId().toString());
+                                startService(service);
+
                                 Intent intent = new Intent(getApplicationContext(), WorkingActivity.class);
                                 startActivity(intent);
                             } else {
