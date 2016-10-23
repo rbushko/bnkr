@@ -120,4 +120,8 @@ public class MainActivity extends AppCompatActivity {
 
         PebbleKit.sendDataToPebble(getApplicationContext(), appUuid, dict);
     }
+
+    public void onBackPressed() {
+        //void
+    }
 }
