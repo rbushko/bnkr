@@ -10,17 +10,6 @@
     tools:context="com.teamsh.bnkr.SignUpActivity"
     android:background="@drawable/backgroundcolorthree">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SIGN IN"
-        android:id="@+id/signInButton"
-        android:background="#1e502b"
-        android:textColor="#ffffff"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
     <EditText
         android:layout_width="281dp"
         android:layout_height="30dp"
@@ -30,7 +19,11 @@
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/confirmPassword"
         android:layout_alignLeft="@+id/passwordText"
-        android:layout_alignStart="@+id/passwordText" />
+        android:layout_alignStart="@+id/passwordText"
+        android:password="true"
+        android:padding="5dp"
+        android:inputType="textPassword"
+        android:hint="Password" />
 
     <EditText
         android:layout_width="281dp"
@@ -40,7 +33,10 @@
         android:background="#ffffff"
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/password"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -72,7 +68,10 @@
         android:background="#ffffff"
         android:layout_gravity="center_horizontal"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/password" />
+        android:layout_above="@+id/password"
+        android:phoneNumber="true"
+        android:padding="5dp"
+        android:hint="4105559089" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -88,13 +87,15 @@
     <EditText
         android:layout_width="281dp"
         android:layout_height="30dp"
-        android:id="@+id/firstNameText"
+        android:id="@+id/lastNameText"
         android:textSize="13dp"
         android:background="#ffffff"
         android:layout_gravity="center_horizontal"
         android:layout_above="@+id/phoneNum"
         android:layout_alignLeft="@+id/phoneNumText"
-        android:layout_alignStart="@+id/phoneNumText" />
+        android:layout_alignStart="@+id/phoneNumText"
+        android:padding="5dp"
+        android:hint="Doe" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -110,12 +111,14 @@
     <EditText
         android:layout_width="281dp"
         android:layout_height="30dp"
-        android:id="@+id/lastNameText"
+        android:id="@+id/firstNameText"
         android:textSize="13dp"
         android:background="#ffffff"
         android:layout_gravity="center_horizontal"
-        android:layout_above="@+id/firstName"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/lastName"
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"
+        android:hint="John" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -127,5 +130,40 @@
         android:layout_gravity="center_horizontal"
         android:layout_above="@+id/lastNameText"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SIGN IN"
+        android:id="@+id/signInButton"
+        android:background="#1e502b"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/confirmPasswordText"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Sign Up"
+        android:id="@+id/signUp"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:textSize="40dp"
+        android:layout_above="@+id/firstName"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_below="@+id/confirmPasswordText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:id="@+id/error"
+        android:textColor="#ff0000"/>
 
 </RelativeLayout>
