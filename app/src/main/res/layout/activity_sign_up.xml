@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.teamsh.bnkr.SignUpActivity"
+    android:background="@drawable/backgroundcolor">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SIGN IN"
+        android:id="@+id/signInButton"
+        android:background="#1e502b"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="281dp"
+        android:layout_height="30dp"
+        android:id="@+id/confirmPasswordText"
+        android:textSize="13dp"
+        android:background="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/confirmPassword"
+        android:layout_alignLeft="@+id/passwordText"
+        android:layout_alignStart="@+id/passwordText" />
+
+    <EditText
+        android:layout_width="281dp"
+        android:layout_height="30dp"
+        android:id="@+id/passwordText"
+        android:textSize="13dp"
+        android:background="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/password"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Password"
+        android:id="@+id/password"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Confirm Password"
+        android:id="@+id/confirmPassword"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/passwordText"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="281dp"
+        android:layout_height="30dp"
+        android:id="@+id/phoneNumText"
+        android:textSize="13dp"
+        android:background="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/password" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Phone Number"
+        android:id="@+id/phoneNum"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:layout_above="@+id/phoneNumText"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="281dp"
+        android:layout_height="30dp"
+        android:id="@+id/firstNameText"
+        android:textSize="13dp"
+        android:background="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:layout_above="@+id/phoneNum"
+        android:layout_alignLeft="@+id/phoneNumText"
+        android:layout_alignStart="@+id/phoneNumText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="First Name"
+        android:id="@+id/firstName"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:layout_above="@+id/firstNameText"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="281dp"
+        android:layout_height="30dp"
+        android:id="@+id/lastNameText"
+        android:textSize="13dp"
+        android:background="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:layout_above="@+id/firstName"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Last Name"
+        android:id="@+id/lastName"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:layout_above="@+id/lastNameText"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
