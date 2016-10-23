@@ -79,8 +79,7 @@ public class BankDataService extends Service implements ConnectionCallbacks, OnC
             public void receiveData(Context context, int transaction_id,
                                     PebbleDictionary dict) {
                 // A new AppMessage was received, tell Pebble
-                final int AppKeySelection = 1;
-                Long selection = dict.getInteger(AppKeySelection);
+                Long selection = dict.getInteger(PebbleCode.SELECTION);
 
                 PebbleKit.sendAckToPebble(context, transaction_id);
 
@@ -117,6 +116,9 @@ public class BankDataService extends Service implements ConnectionCallbacks, OnC
                 "&key=AIzaSyAUqtN0SYduBia8NuugzPF46ma01dOLgEQ";
 
         Log.d("Map URL", mapURL);
+        PebbleDictionary dict = new PebbleDictionary();
+
+        dict.addString(PebbleCode.IMAGE_URL, mapURL);
         //Bitmap bmp = Picasso.with(getApplicationContext()).load(mapURL).get();
     }
 

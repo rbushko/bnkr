@@ -116,9 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendSignalToPebble() {
         PebbleDictionary dict = new PebbleDictionary();
-
-        final int AppKeyLoggedIn = 0;
-        dict.addInt32(AppKeyLoggedIn, 1);
+        dict.addInt32(PebbleCode.LOGGED_IN, 1);
 
         PebbleKit.sendDataToPebble(getApplicationContext(), appUuid, dict);
     }
