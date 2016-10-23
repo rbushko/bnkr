@@ -9,18 +9,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.getpebble.android.kit.PebbleKit;
+import com.getpebble.android.kit.util.PebbleDictionary;
 import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
-import com.reimaginebanking.api.nessieandroidsdk.constants.AccountType;
 import com.reimaginebanking.api.nessieandroidsdk.models.Account;
 import com.reimaginebanking.api.nessieandroidsdk.models.Customer;
 import com.reimaginebanking.api.nessieandroidsdk.requestclients.NessieClient;
 
 import java.util.List;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
     private NessieClient nessieClient;
+    final UUID appUuid = UUID.fromString("140862c0-5447-4504-a65c-b82c01736218");
 
     private EditText phoneNumberEdit;
     private EditText passwordEdit;
@@ -78,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                             if (a.getAccountNumber().equals("000000" + phoneNumberEdit.getText().toString())
                                     && a.getNickname().equals(passwordEdit.getText().toString())) {
                                 Log.d("Sign in", "Success");
+                                sendSignalToPebble();
 
                                 // Start the pebble service
                                 Intent service = new Intent(getApplicationContext(), BankDataService.class);
@@ -110,36 +114,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void createAccount() {
+    public void sendSignalToPebble() {
+        PebbleDictionary dict = new PebbleDictionary();
 
-        final Account newAccount = new Account.Builder()
-                .accountNumber("1111")
-                .nickname("rebecca")
-                .balance(0)
-                .rewards(0)
-                .type(AccountType.CHECKING)
-                .build();
+        final int AppKeyLoggedIn = 0;
+        dict.addInt32(AppKeyLoggedIn, 1);
 
-        nessieClient.CUSTOMER.getCustomers(new NessieResultsListener() {
-            @Override
-            public void onSuccess(Object result) {
-                List<Customer> customers = (List<Customer>) result;
-                nessieClient.ACCOUNT.createAccount(customers.get(0).getId(), newAccount, new NessieResultsListener() {
-                    @Override
-                    public void onSuccess(Object result) {
-                        Log.d("Account Creation", "Success");
-                    }
-
-                    @Override
-                    public void onFailure(NessieError error) {
-                        Log.d("Account Creation", "Failure - " + error.getMessage() + ". Culprit - " + error.getCulprit());
-                    }
-                });
-            }
-            @Override
-            public void onFailure(NessieError error) {
-                // handle error
-            }
-        });
+        PebbleKit.sendDataToPebble(getApplicationContext(), appUuid, dict);
     }
 }

@@ -2,6 +2,7 @@ package com.teamsh.bnkr;
 
 import android.app.Activity;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -13,6 +14,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
+import com.getpebble.android.kit.PebbleKit;
+import com.getpebble.android.kit.PebbleKit.PebbleDataReceiver;
+import com.getpebble.android.kit.util.PebbleDictionary;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -26,6 +30,7 @@ import com.reimaginebanking.api.nessieandroidsdk.models.PaginatedResponse;
 import com.reimaginebanking.api.nessieandroidsdk.requestclients.NessieClient;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import static com.google.android.gms.common.api.GoogleApiClient.Builder;
 import static com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
@@ -36,6 +41,9 @@ public class BankDataService extends Service implements ConnectionCallbacks, OnC
     private GoogleApiClient googleApiClient;
 
     private Location mLocation;
+    final UUID appUuid = UUID.fromString("140862c0-5447-4504-a65c-b82c01736218");
+
+    String id = "";
 
     @Nullable
     @Override
@@ -55,9 +63,40 @@ public class BankDataService extends Service implements ConnectionCallbacks, OnC
 
         googleApiClient.connect();
 
-        String id = intent.getStringExtra("id");
+        createReceiver();
+
+        id = intent.getStringExtra("id");
         Log.d("Service Status", "Running with ID " + id);
 
+        return Service.START_STICKY;
+    }
+
+    public void createReceiver() {
+        // Create a new receiver to get AppMessages from the C app
+        PebbleDataReceiver dataReceiver = new PebbleKit.PebbleDataReceiver(appUuid) {
+
+            @Override
+            public void receiveData(Context context, int transaction_id,
+                                    PebbleDictionary dict) {
+                // A new AppMessage was received, tell Pebble
+                final int AppKeySelection = 1;
+                Long selection = dict.getInteger(AppKeySelection);
+
+                PebbleKit.sendAckToPebble(context, transaction_id);
+
+                final int CheckBalance = 0;
+                if (selection == CheckBalance) {
+                    getBalance();
+                } else {
+                    getATM();
+                }
+            }
+
+        };
+        PebbleKit.registerReceivedDataHandler(getApplicationContext(), dataReceiver);
+    }
+
+    public void getBalance() {
         nessieClient.ACCOUNT.getAccount(id, new NessieResultsListener() {
             @Override
             public void onSuccess(Object result) {
@@ -70,9 +109,6 @@ public class BankDataService extends Service implements ConnectionCallbacks, OnC
                 Log.d("Account Balance", "Failure - " + error.getMessage());
             }
         });
-
-
-        return Service.START_STICKY;
     }
 
     public void getMap(float latitude, float longitude) throws IOException {
@@ -143,7 +179,7 @@ public class BankDataService extends Service implements ConnectionCallbacks, OnC
         mLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
         if (mLocation != null) {
             Log.d("Location", mLocation.getLatitude() + ", " + mLocation.getLongitude());
-            getATM();
+            //getATM();
         } else {
             Log.d("Location", "Not Connected");
         }
