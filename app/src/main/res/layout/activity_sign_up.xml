@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.teamsh.bnkr.SignUpActivity"
-    android:background="@drawable/backgroundcolorthree">
+    android:background="@drawable/backgroundcolortwo">
 
     <EditText
         android:layout_width="281dp"
@@ -139,9 +139,9 @@
         android:background="#1e502b"
         android:textColor="#ffffff"
         android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="29dp"
-        android:layout_below="@+id/confirmPasswordText"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/phoneNum"
+        android:layout_alignStart="@+id/phoneNum" />
 
     <TextView
         android:layout_width="wrap_content"
