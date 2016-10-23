@@ -28,6 +28,8 @@ import com.reimaginebanking.api.nessieandroidsdk.models.Customer;
 import com.reimaginebanking.api.nessieandroidsdk.models.PaginatedResponse;
 import com.reimaginebanking.api.nessieandroidsdk.requestclients.NessieClient;
 
+import java.io.IOException;
+
 import static com.google.android.gms.common.api.GoogleApiClient.Builder;
 import static com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 
@@ -36,15 +38,12 @@ public class WorkingActivity extends AppCompatActivity implements ConnectionCall
     private NessieClient nessieClient;
     private GoogleApiClient googleApiClient;
 
-    private final int SCREEN_W = 144;
-    private final int SCREEN_H = 168;
-
     private Location mLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_working);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -56,22 +55,15 @@ public class WorkingActivity extends AppCompatActivity implements ConnectionCall
                 .addApi(AppIndex.API)
                 .addApi(LocationServices.API)
                 .build();
-
-        //createCustomer();
-        //getATM();
-        //getBranch();
     }
 
-    public void getMap(float latitude, float longitude) {
-        String mapURL = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=16&size=600x300&maptype=roadmap" +
+    public void getMap(float latitude, float longitude) throws IOException {
+        String mapURL = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=16&size=144x168&maptype=roadmap" +
                 "&markers=color:blue%7Clabel:A%7C" + latitude + "," + longitude +
                 "&key=AIzaSyAUqtN0SYduBia8NuugzPF46ma01dOLgEQ";
 
         Log.d("Map URL", mapURL);
-        //Picasso.with(getApplicationContext())
-        //.load(mapURL)
-        //.resize(SCREEN_W, SCREEN_H)
-        //.into((ImageView) findViewById(R.id.map));
+        //Bitmap bmp = Picasso.with(getApplicationContext()).load(mapURL).get();
     }
 
     public static float getDistance(double lat1, double lng1, double lat2, double lng2) {
@@ -90,10 +82,6 @@ public class WorkingActivity extends AppCompatActivity implements ConnectionCall
         return dist;
     }
 
-    public void getBranch() {
-
-    }
-
     public void getATM() {
 
         nessieClient.ATM.getATMs((float) mLocation.getLatitude(), (float) mLocation.getLongitude(), 8f, new NessieResultsListener() {
@@ -101,18 +89,24 @@ public class WorkingActivity extends AppCompatActivity implements ConnectionCall
             public void onSuccess(Object result) {
                 PaginatedResponse<ATM> response = (PaginatedResponse<ATM>) result;
 
-                ATM nearestATM = response.getObjectList().get(0);
-                for (ATM atm : response.getObjectList()) {
-                    if (getDistance(mLocation.getLatitude(), mLocation.getLongitude(), atm.getGeocode().getLat(), atm.getGeocode().getLng()) <
-                            getDistance(mLocation.getLatitude(), mLocation.getLongitude(), nearestATM.getGeocode().getLat(), nearestATM.getGeocode().getLng())) {
-                        nearestATM = atm;
-                        //Log.d("New Nearest ATM", nearestATM.toString());
+                if (response.getObjectList().size() > 0) {
+                    ATM nearestATM = response.getObjectList().get(0);
+                    for (ATM atm : response.getObjectList()) {
+                        if (getDistance(mLocation.getLatitude(), mLocation.getLongitude(), atm.getGeocode().getLat(), atm.getGeocode().getLng()) <
+                                getDistance(mLocation.getLatitude(), mLocation.getLongitude(), nearestATM.getGeocode().getLat(), nearestATM.getGeocode().getLng())) {
+                            nearestATM = atm;
+                            //Log.d("New Nearest ATM", nearestATM.toString());
+                        }
+                        //Log.d("ATM Result", atm.toString());
                     }
-                    //Log.d("ATM Result", atm.toString());
-                }
 
-                Log.d("Nearest ATM Result", nearestATM.toString());
-                getMap(nearestATM.getGeocode().getLat(), nearestATM.getGeocode().getLng());
+                    Log.d("Nearest ATM Result", nearestATM.toString());
+                    try {
+                        getMap(nearestATM.getGeocode().getLat(), nearestATM.getGeocode().getLng());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
 
             @Override

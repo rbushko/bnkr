@@ -26,26 +26,27 @@
             android:id="@+id/imageView"
 
             android:src="@drawable/logo3"
-            android:layout_marginLeft="40dp" />
+            android:layout_gravity="center_horizontal" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="User ID"
+            android:text="Phone Number"
             android:id="@+id/textView"
             android:textColor="#ffffff"
-            android:layout_marginLeft="30dp" />
+            android:layout_gravity="center_horizontal" />
 
         <EditText
             android:layout_width="281dp"
-            android:layout_height="30dp"
-            android:id="@+id/editText"
-            android:layout_marginTop="10dp"
-            android:text="Type your account number"
+            android:id="@+id/accountNumberEdit"
             android:textSize="13dp"
             android:background="#ffffff"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:padding="5dp"
+            android:layout_height="40dp"
+            android:hint="1234567890123456"
+            android:phoneNumber="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -53,43 +54,18 @@
             android:text="Password"
             android:id="@+id/textView2"
             android:textColor="#ffffff"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="5dp" />
+            android:layout_gravity="center_horizontal" />
 
         <EditText
             android:layout_width="283dp"
-            android:layout_height="32dp"
-            android:id="@+id/editText3"
-            android:layout_marginTop="10dp"
-            android:text="Type your password"
+            android:id="@+id/passwordEdit"
             android:textSize="13dp"
             android:background="#ffffff"
-            android:layout_gravity="center_horizontal" /><![CDATA[
-
-
-
-
-
-
-
-
-
-
-
-        android:layout_gravity="right"
-            android:src="@mipmap/logo1" />
-
-
-
-
-
-
-
-
-
-
-
-        ]]>
+            android:layout_gravity="center_horizontal"
+            android:padding="5dp"
+            android:layout_height="40dp"
+            android:hint="Password"
+            android:password="true" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -106,23 +82,23 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="LOG IN"
-                    android:id="@+id/button2"
+                    android:text="SIGN IN"
+                    android:id="@+id/signInButton"
                     android:background="#1e502b"
                     android:textColor="#ffffff"
                     android:layout_gravity="center_horizontal|top"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginTop="23dp" />
+                    android:layout_marginTop="20dp" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="SIGN UP"
-                    android:id="@+id/button"
+                    android:id="@+id/signUpButton"
                     android:layout_gravity="center"
-                    android:layout_marginTop="39dp"
+                    android:layout_marginTop="30dp"
                     android:textColor="#ffffff"
                     android:background="#1e502b" />
             </FrameLayout>
