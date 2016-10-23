@@ -35,7 +35,7 @@
             android:id="@+id/smileFace"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.87"
-            android:src="@drawable/checkMark" />
+            android:src="@drawable/checkmark" />
     </LinearLayout>
 
     <TextView
@@ -53,8 +53,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BACK "
-        android:id="@+id/button"
+        android:text="back"
+        android:id="@+id/backButton"
         android:background="#1e502b"
         android:textColor="#ffffff"
         android:layout_gravity="center_horizontal|top"
